@@ -1,4 +1,4 @@
 #!/bin/sh
 set -euo pipefail
-mkdir /tmp/deno_dir
+[ ! -d "/tmp/deno_dir" ] && mkdir /tmp/deno_dir
 DENO_DIR=/tmp/deno_dir deno run -A --no-check $(cd $(dirname $0); pwd)/runtime.js
