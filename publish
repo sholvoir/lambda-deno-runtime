@@ -1,7 +1,7 @@
 #!/bin/sh
 set -euo pipefail
 [ ! -d "bin" ] && mkdir bin
-curl -o /tmp/deno-linux.zip -L https://github.com/denoland/deno/releases/download/v1.9.2/deno-x86_64-unknown-linux-gnu.zip
+curl -sSL https://github.com/denoland/deno/releases/download/v1.9.2/deno-x86_64-unknown-linux-gnu.zip -o /tmp/deno-linux.zip
 unzip /tmp/deno-linux.zip -d bin
 rm /tmp/deno-linux.zip
 deno bundle runtime.ts runtime.js
