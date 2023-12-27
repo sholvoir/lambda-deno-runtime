@@ -2,7 +2,7 @@ async function init() {
     const runtimeApi = `http://${Deno.env.get('AWS_LAMBDA_RUNTIME_API')}/2018-06-01/runtime`;
     let handle;
     try {
-        const [file, method] = Deno.env.get('_HANDLER')?.split('.') as [string, string];
+        const [file, method] = Deno.env.get('_HANDLER')?.split('.');
         const script = `${Deno.env.get('LAMBDA_TASK_ROOT')}/${file}.js`;
         handle = (await import(script))[method];
     } catch (detail) { await fetch (`${runtimeApi}/init/error`, {
@@ -45,4 +45,4 @@ async function init() {
     }
 }
 
-await init();
+if (import.meta.main) await init();

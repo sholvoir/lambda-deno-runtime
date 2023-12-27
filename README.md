@@ -16,7 +16,8 @@ You will get the layer Arn. Add the layer Arn to your function.
 ## how code the handler
 Just like for node.js, write your ts code like this:
 ```TypeScript
-import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from "https://deno.land/x/lambda/mod.ts";
+import { APIGatewayProxyEvent, APIGatewayProxyResult, Context }
+  from 'https://esm.sh/@types/aws-lambda@8.10.130/index.d.ts';
 
 export async function handler(event: APIGatewayProxyEvent, context: Context): Promise<APIGatewayProxyResult> {
   return {
@@ -26,7 +27,9 @@ export async function handler(event: APIGatewayProxyEvent, context: Context): Pr
   };
 }
 ```
-use <code>deno bundle</code> to bundle your code to a sighle js file and
-tell lambda that the handler is "*yourbundlejsfilename.handler*".
+Use <a href="https://github.com/denoland/deno_emit" target="_blank" rel="noopener noreferrer">deno_emit</a>,
+<a href="https://esbuild.github.io/" target="_blank" rel="noopener noreferrer">esbuild</a>
+or <a href="https://rollupjs.org" target="_blank" rel="noopener noreferrer">rollup</a>
+to bundle your code to a single js file and tell lambda that the handler is "*yourbundlejsfilename.handler*".
 
-done. enjoy.
+Done. enjoy.
